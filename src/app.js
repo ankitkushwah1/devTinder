@@ -1,24 +1,31 @@
 const express = require("express");
-const { adminAuth, userAuth } = require("./middleware/auth");
-
+const connectDB = require("./config/database");
 const app = express();
+const User = require("./models/user");
 
-app.get("/getUserData", (req, res) => {
+app.post("/singup", async (req, res) => {
+  // Creating a new instance of the User Modal
+  const user = new User({
+    firstName: "Sachin",
+    lastName: "Tendulakr",
+    emailId: "sachin9856@gmail.com",
+    password: "sachin@131998",
+  });
   try {
-    throw new Error("Random Error");
-    res.send("User Data sent");
-  } catch (err) {}
-  // Logic of DB call and get user data
-  res.status(500).send("Some Error contact support team2");
-});
-
-app.use("/", (err, req, res, next) => {
-  if (err) {
-    // Log your Error
-    res.status(500).send("something went wrong");
+    await user.save();
+    res.send("User Added Succesfully");
+  } catch (err) {
+    res.status.apply(400).send("Error saving the user:" + err.message);
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server is sucessfully listening on port 3000 ...");
-});
+connectDB()
+  .then(() => {
+    console.log("Database connection established...");
+    app.listen(3000, () => {
+      console.log("Server is sucessfully listening on port 3000 ...");
+    });
+  })
+  .catch((err) => {
+    console.log("Database cannot be connected!!");
+  });

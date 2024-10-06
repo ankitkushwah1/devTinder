@@ -30,4 +30,13 @@
 - Diffrence BWT app.use and app.all
 - Write a dummy auth middleware for admin
 - Write a dummy auth middleware for all user routes, except /user/login
--
+
+- Created a free cluster on MongoDB website (Mongo Atlas)
+- Install mongoose library
+- Connect your application to database
+- Call the connectDB function and connect to database before starting apllication 3000
+- Create a user Schema
+- What is the \_id and \_\_v in mongodb
+- Create /signup API to add data to database
+- Push some document using API call from postman
+- Error Handling usinmg try, catch
