@@ -9,7 +9,7 @@ app.get("/getUserData", (req, res) => {
     res.send("User Data sent");
   } catch (err) {}
   // Logic of DB call and get user data
-  res.status(500).send("Some Error contact support team");
+  res.status(500).send("Some Error contact support team2");
 });
 
 app.use("/", (err, req, res, next) => {
