@@ -21,3 +21,13 @@
 - Exlplore routing and use of ?, + , (), \* in the routes
 - Use of regex in rotes /a/ , //\*fly$/
 - How to read query params in the routes and reading the dynamic routes
+
+- Multiple Route Handler -Play with Code
+- next()
+- next function and errors
+- What is middleware
+- How express JS basically handles request behind the scene
+- Diffrence BWT app.use and app.all
+- Write a dummy auth middleware for admin
+- Write a dummy auth middleware for all user routes, except /user/login
+-
