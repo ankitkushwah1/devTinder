@@ -43,3 +43,9 @@
 - Diffrence between JSON and javascript object
 - add the express.json middleware to your app
 - Make your signup API dynamic to recevied data from the end user
+- User.findOne with duplicate email ids , which one returs
+- API - GET user by email
+- API- Feed API -GET /feed - get all the user from the database
+- API -GET USER BY ID
+- Create Delete User by userId
+- Diffrence Between PATCH AND PUT
