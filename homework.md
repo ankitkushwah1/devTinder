@@ -49,3 +49,9 @@
 - API -GET USER BY ID
 - Create Delete User by userId
 - Diffrence Between PATCH AND PUT
+
+- Validate data in Signup API
+- Install bcrypt package
+- Create a password Hashed using bcrypt.hash &saving the user is expected password
+- Create Login API
+- Compare password and throw errors if email or password is invalid
