@@ -4,7 +4,12 @@ const app = express();
 const User = require("./models/user");
 const { validateSignUpData, validateLoginData } = require("./utils/validation");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
+const { userAuth } = require("./middleware/auth");
+
 app.use(express.json());
+app.use(cookieParser());
 app.post("/singup", async (req, res) => {
   try {
     // Validation of data
@@ -38,10 +43,32 @@ app.post("/login", async (req, res) => {
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid) {
+      // Create a JWT Token
+      const token = await jwt.sign({ _id: user._id }, "DEV@Tinder$790", {
+        expiresIn: "1d",
+      });
+      console.log(token);
+      // Add the token to cookie and send the response back to the server
+      res.cookie("token", token, {
+        expires: new Date(Date.now() + 8 * 3600000),
+      });
       res.send("Login Succesfull!!");
     } else {
       throw new Error("Invalid Credentials!");
     }
+  } catch (err) {
+    res.status(400).send("ERROR : " + err.message);
+  }
+});
+
+//  Get User Profile
+app.get("/profile", userAuth, async (req, res) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      throw new Error("user does not exist");
+    }
+    res.send(user);
   } catch (err) {
     res.status(400).send("ERROR : " + err.message);
   }
@@ -112,6 +139,14 @@ app.patch("/user/:userId", async (req, res) => {
   } catch (err) {
     res.status(400).send("UPDATE FAILED: " + err.message);
   }
+});
+
+// SEND CNNECTION REQUIEST
+app.post("/sendConnectionRequest", userAuth, async (req, res) => {
+  const user = req.user;
+  // Sending a connection request
+  console.log("Sending a connection request");
+  res.send(user.firstName + " send the connection request");
 });
 
 connectDB()
