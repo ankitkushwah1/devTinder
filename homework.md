@@ -65,3 +65,22 @@
 - userAuth Middleware
 - And the userAuth middle were in profile API and new sendConnectionRequest API
 - Set the expiry of JWT token and cookies to 7 days
+- Create UserSchema method to getJWT()
+- Create UserSchema method to validate
+
+- Explore tinder APIs
+- Create a list all API you can think of in Dev Tinder
+- Group multiple routes under respective routes
+- Read Documenttation for express.Router
+- Create routes folder for managing auth, profile, request router
+- Create authRouter , profileRouter , requestRouter
+- Import these routers in app.js
+
+- Read Compund Indexes in MongoDB
+- why do we need index in DB?
+- what is the advantages and disadvantages of creating?
+- Create a connection Request Schema
+- Send Connection Request API
+- Proper validation of Data
+- Think About all corner cases
+- $or query and $and query
