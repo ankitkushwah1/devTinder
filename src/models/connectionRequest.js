@@ -5,6 +5,7 @@ const connectionRequestSchema = new Schema(
   {
     fromUserId: {
       type: Schema.Types.ObjectId,
+      ref: "User", // refrence to the User Collection
       required: true,
     },
     toUserId: {
@@ -15,7 +16,7 @@ const connectionRequestSchema = new Schema(
       type: String,
       required: true,
       enum: {
-        values: ["ignored", "interested", "accepeted", "rejected"],
+        values: ["ignored", "interested", "accepted", "rejected"],
         message: `{VALUE} is incorrect status type`,
       },
     },
