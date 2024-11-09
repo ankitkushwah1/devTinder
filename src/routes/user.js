@@ -34,11 +34,18 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
         { toUserId: loggedInUser._id, status: "accepted" },
         { fromUserId: loggedInUser._id, status: "accepted" },
       ],
-    }).populate("fromUserId", USER_SAFE_DATA);
+    })
+      .populate("fromUserId", USER_SAFE_DATA)
+      .populate("toUserId", USER_SAFE_DATA);
     if (!connection) {
       return res.status(404).send({ message: "No connection Found" });
     }
-    const data = connection.map((row) => row.fromUserId);
+    const data = connection.map((row) => {
+      if (row.fromUserId._id.toString() === loggedInUser._id.toString()) {
+        return row.toUserId;
+      }
+      return row.fromUserId;
+    });
     res.status(200).json({ message: "Data Fetch Succesfully ", data });
   } catch (err) {
     res.status(400).send({ message: err.message });
