@@ -49,18 +49,18 @@ app.get("/user", async (req, res) => {
 });
 
 // Feed API -GET/ Feed - get all the users from the database
-app.get("/feed", async (req, res) => {
-  try {
-    const users = await User.find({});
-    if (users.length > 0) {
-      res.send(users);
-    } else {
-      res.status(404).send("Users not found");
-    }
-  } catch (err) {
-    res.status(404).send("Feeds Not fetched Succesfully");
-  }
-});
+// app.get("/feed", async (req, res) => {
+//   try {
+//     const users = await User.find({});
+//     if (users.length > 0) {
+//       res.send(users);
+//     } else {
+//       res.status(404).send("Users not found");
+//     }
+//   } catch (err) {
+//     res.status(404).send("Feeds Not fetched Succesfully");
+//   }
+// });
 
 // Delete API
 app.delete("/user", async (req, res) => {

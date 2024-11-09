@@ -84,3 +84,10 @@
 - Proper validation of Data
 - Think About all corner cases
 - $or query and $and query
+
+-Logic for GET / feed API
+
+/feed?page=1&limit=10 => first 10 user 1-10
+/feed?page=2&limit=10 => 11-20
+/feed?page=3&limit=10 =>21-30
+.skip() & .limit()
